@@ -32,6 +32,9 @@ set relativenumber
 " Show line numbers
 set number
 
+" Higlight long lines
+set colorcolumn=121
+
 " Menu options
 set wildmenu
 
@@ -108,7 +111,7 @@ map <leader>gc :Gcommit<CR>
 
 " Save and Quit
 nnoremap <leader>q :q<CR>
-nnoremap <leader>s :w<CR>
+nnoremap <leader>w :w<CR>
 
 " Save session
 nnoremap <leader>S :mksession<CR>
