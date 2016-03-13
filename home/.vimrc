@@ -6,6 +6,9 @@ filetype plugin indent on
 set background=dark
 colorscheme solarized
 
+" Swap files are annoying
+set noswapfile
+
 " Tab to spaces
 set tabstop=2
 set softtabstop=2
@@ -15,7 +18,7 @@ set expandtab
 set backspace=eol,start,indent
 
 " Cursor surrounding
-set so=10
+set scrolloff=10
 
 " Ignorecase
 set ignorecase
@@ -47,6 +50,12 @@ set hidden
 " Keybindings
 let mapleader="\<Space>"
 nnoremap <leader>c :nohlsearch<CR>
+
+" Normal mode on jk
+imap jk <esc>
+
+" Make newlines more easily.
+nmap <CR> o<Esc>
 
 " Faster rails paths
 noremap ,jm :CtrlP app/models<CR>
@@ -89,6 +98,10 @@ nnoremap <leader>s :s<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
+
+" Git
+map <leader>gs :Gstatus<CR>
+map <leader>gc :Gcommit<CR>
 
 " Save
 nnoremap <leader>s :w<CR>
