@@ -47,6 +47,9 @@ set ruler
 " Hide buffers with changes
 set hidden
 
+" Fugitive - branch in status line
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
 " Keybindings
 let mapleader="\<Space>"
 nnoremap <leader>c :nohlsearch<CR>
