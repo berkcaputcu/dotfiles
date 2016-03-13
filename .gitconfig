@@ -1,0 +1,30 @@
+[core]
+  editor = vim
+	paper = less
+[alias]
+  ci = commit
+  co = checkout
+  st = status
+  br = branch
+	cp = cherry-pick
+	rb = rebase
+[push]
+  default = simple
+[pull]
+  rebase = true
+[merge]
+  tool = splice
+[mergetool "splice"]
+  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+  trustExitCode = true
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+[user]
+	name = berkcaputcu
+	email = berk.caputcu@shopify.com
+[pr-release]
+	token = 4922282f4203051a01066425736c762b9b4b6d1f
