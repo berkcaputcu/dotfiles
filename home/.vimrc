@@ -103,7 +103,8 @@ map <leader>tc :tabclose<cr>
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
 
-" Save
+" Save and Quit
+nnoremap <leader>q :q<CR>
 nnoremap <leader>s :w<CR>
 
 " Save session
