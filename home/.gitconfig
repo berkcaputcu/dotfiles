@@ -13,10 +13,7 @@
 [pull]
   rebase = true
 [merge]
-  tool = splice
-[mergetool "splice"]
-  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-  trustExitCode = true
+  tool = vimdiff
 [color]
   branch = auto
   diff = auto
