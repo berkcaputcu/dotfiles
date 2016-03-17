@@ -6,6 +6,9 @@ filetype plugin indent on
 set background=dark
 colorscheme solarized
 
+" Match
+runtime macros/matchit.vim
+
 " Swap files are annoying
 set noswapfile
 
@@ -13,6 +16,7 @@ set noswapfile
 set tabstop=2
 set softtabstop=2
 set expandtab
+set shiftwidth=2
 
 " Sane backspace
 set backspace=eol,start,indent
@@ -53,7 +57,7 @@ set hidden
 " Fugitive - branch in status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" Keybindings
+" Mapping
 let mapleader="\<Space>"
 nnoremap <leader>c :nohlsearch<CR>
 
@@ -64,19 +68,26 @@ imap jk <esc>
 nmap <CR> o<Esc>
 
 " Faster rails paths
+noremap ,ja :CtrlP app<CR>
 noremap ,jm :CtrlP app/models<CR>
+noremap ,jj :CtrlP app/jobs<CR>
 noremap ,jc :CtrlP app/controllers<CR>
 noremap ,jv :CtrlP app/views<CR>
 noremap ,jh :CtrlP app/helpers<CR>
+noremap ,js :CtrlP app/services<CR>
 noremap ,jl :CtrlP lib<CR>
-noremap ,js :CtrlP spec<CR>
 noremap ,jC :CtrlP config<CR>
 noremap ,jV :CtrlP vendor<CR>
-noremap ,jT :CtrlP test<CR>
+noremap ,jt :CtrlP test<CR>
+noremap ,jf :CtrlP test/fixtures<CR>
 
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+" Buffers
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bb :bp<CR>
 
 " Windows
 nnoremap ,, <C-w>w
@@ -108,6 +119,7 @@ map <leader>tc :tabclose<cr>
 " Git
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
+map <leader>gb :Gblame<CR>
 
 " Save and Quit
 nnoremap <leader>q :q<CR>
@@ -126,6 +138,7 @@ nnoremap ^ <nop>
 
 " Source this file
 nnoremap <leader>sv :source ~/.vimrc<CR>
+nnoremap <leader>ev :e ~/.vimrc<CR>
 
 " CtrlP settings
 let g:ctrlp_switch_buffer = 0
