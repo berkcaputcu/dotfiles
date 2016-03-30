@@ -2,6 +2,9 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" System clipboard
+set clipboard=unnamed
+
 " Theme
 set background=dark
 colorscheme solarized
@@ -22,7 +25,7 @@ set shiftwidth=2
 set backspace=eol,start,indent
 
 " Cursor surrounding
-set scrolloff=10
+set scrolloff=5
 
 " Ignorecase
 set ignorecase
@@ -54,6 +57,9 @@ set ruler
 " Hide buffers with changes
 set hidden
 
+" Save buffers when they are hidden
+set autowrite
+
 " Fugitive - branch in status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -80,6 +86,21 @@ noremap ,jC :CtrlP config<CR>
 noremap ,jV :CtrlP vendor<CR>
 noremap ,jt :CtrlP test<CR>
 noremap ,jf :CtrlP test/fixtures<CR>
+
+" vim-test mappings
+nmap <silent> <leader>tr :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tt :TestLast<CR>
+nmap <silent> <leader>tg :TestVisit<CR>
+
+" shopify dev test strategy
+function! DevTestStrategy(cmd)
+  echo 'It works! Command for running tests: ' . a:cmd
+endfunction
+
+let g:test#custom_strategies = {'dev_test': function('DevTestStrategy')}
+let g:test#strategy = 'dev_test'
 
 " move vertically by visual line
 nnoremap j gj
