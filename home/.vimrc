@@ -86,21 +86,13 @@ noremap ,jC :CtrlP config<CR>
 noremap ,jV :CtrlP vendor<CR>
 noremap ,jt :CtrlP test<CR>
 noremap ,jf :CtrlP test/fixtures<CR>
+noremap ,jpm :CtrlP app/models/payments<CR>
+noremap ,jpt :CtrlP test/unit/payments<CR>
 
-" vim-test mappings
-nmap <silent> <leader>tr :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tt :TestLast<CR>
-nmap <silent> <leader>tg :TestVisit<CR>
+nmap <leader>n :NERDTree<CR>
 
-" shopify dev test strategy
-function! DevTestStrategy(cmd)
-  echo 'It works! Command for running tests: ' . a:cmd
-endfunction
-
-let g:test#custom_strategies = {'dev_test': function('DevTestStrategy')}
-let g:test#strategy = 'dev_test'
+" binding.pry
+noremap <leader>p ibinding.pry<Esc>==
 
 " move vertically by visual line
 nnoremap j gj
