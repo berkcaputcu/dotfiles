@@ -6,7 +6,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 ZSH_CUSTOM=~/dotfiles/zsh-custom
 
-plugins=(git bgnotify zsh-256color)
+plugins=(git zsh-256color)
 
 source $ZSH/oh-my-zsh.sh
 
