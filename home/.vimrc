@@ -133,10 +133,13 @@ map <leader>tc :tabclose<cr>
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gb :Gblame<CR>
+map <leader>gr :Gbrowse<CR>
 
 " Save and Quit
 nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
+:command! Q q
+:command! Qa qa
 
 " Save session
 nnoremap <leader>S :mksession<CR>
