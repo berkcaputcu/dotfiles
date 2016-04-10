@@ -16,3 +16,4 @@
 - vim-rails
 - vim-textobj-rubyblock
 - vim-unimpaired
+- splitjoin.vim

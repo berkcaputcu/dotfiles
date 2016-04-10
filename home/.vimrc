@@ -136,7 +136,7 @@ map <leader>gb :Gblame<CR>
 map <leader>gr :Gbrowse<CR>
 
 " Save and Quit
-nnoremap <leader>q :q<CR>
+nnoremap <leader>q :close<CR>
 nnoremap <leader>w :w<CR>
 :command! Q q
 :command! Qa qa
