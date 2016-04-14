@@ -21,6 +21,9 @@ set softtabstop=2
 set expandtab
 set shiftwidth=2
 
+" automatically reload
+set autoread
+
 " Sane backspace
 set backspace=eol,start,indent
 
@@ -92,7 +95,10 @@ noremap ,jpt :CtrlP test/unit/payments<CR>
 nmap <leader>n :NERDTree<CR>
 
 " binding.pry
-noremap <leader>p ibinding.pry<Esc>==
+noremap <leader>b ibinding.pry<Esc>==
+
+" paste last yank
+noremap <leader>p "0p
 
 " move vertically by visual line
 nnoremap j gj
