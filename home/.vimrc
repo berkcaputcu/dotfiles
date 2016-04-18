@@ -2,12 +2,20 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+au BufWritePost *.rb silent! !eval 'rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log' &
+
 " System clipboard
 set clipboard=unnamed
 
 " Theme
 set background=dark
 colorscheme solarized
+
+" Diff theme
+highlight DiffAdd ctermfg=250 ctermbg=22
+highlight DiffDelete ctermfg=250 ctermbg=52
+highlight DiffChange ctermfg=250 ctermbg=25
+highlight DiffText ctermfg=195 ctermbg=130 cterm=bold
 
 " Match
 runtime macros/matchit.vim
@@ -21,8 +29,8 @@ set softtabstop=2
 set expandtab
 set shiftwidth=2
 
-" automatically reload
 set autoread
+set autoindent
 
 " Sane backspace
 set backspace=eol,start,indent
@@ -73,11 +81,12 @@ nnoremap <leader>c :nohlsearch<CR>
 " Normal mode on jk
 imap jk <esc>
 
-" Make newlines more easily.
-nmap <CR> o<Esc>
+" Enter commands with semicolon
+nnoremap ; :
 
 " Faster rails paths
 noremap ,ja :CtrlP app<CR>
+noremap ,jd :CtrlP db<CR>
 noremap ,jm :CtrlP app/models<CR>
 noremap ,jj :CtrlP app/jobs<CR>
 noremap ,jc :CtrlP app/controllers<CR>
@@ -99,6 +108,12 @@ noremap <leader>b ibinding.pry<Esc>==
 
 " paste last yank
 noremap <leader>p "0p
+
+" copy current file path
+nmap <leader>d :let @* = expand("%")<CR>
+
+" toggle paste mode before pasting
+noremap ,p :set pastetoggle=<CR>
 
 " move vertically by visual line
 nnoremap j gj
@@ -127,23 +142,29 @@ noremap ,v <C-w>v
 nnoremap ,c <C-w>c
 nnoremap ,o <C-w>o
 
-nnoremap <leader>vs :vs<cr>
-nnoremap <leader>s :s<cr>
+nnoremap <leader>vs <C-w>v<C-w>l
+nnoremap <leader>sp <C-w>s<C-w>j
 
 " Tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 
+" Shift to go between tabs
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+
 " Git
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gb :Gblame<CR>
 map <leader>gr :Gbrowse<CR>
+map <leader>gd :Gdiff<CR>
 
 " Save and Quit
 nnoremap <leader>q :close<CR>
 nnoremap <leader>w :w<CR>
+nnoremap <leader>s :w<CR>
 :command! Q q
 :command! Qa qa
 
@@ -153,10 +174,8 @@ nnoremap <leader>S :mksession<CR>
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
+onoremap B ^
+onoremap E $
 
 " Source this file
 nnoremap <leader>sv :source ~/.vimrc<CR>
@@ -169,3 +188,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Silversearch
 set runtimepath^=~/.vim/bundle/ag
+
+" Abbreviations
+iabbrev edn end
+iabbrev wehn when
+iabbrev dfe def

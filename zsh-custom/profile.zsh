@@ -8,6 +8,7 @@ alias rtest="ruby -Itest"
 
 alias cds="cd ~/code/Shopify"
 alias cdc="cd ~/code/"
+alias cdd="cd ~/Desktop/docs"
 
 alias gl='git log --graph --pretty=format:"%Creset%h %aN %Cred%d %Cblue%s"'
 alias gd='git diff HEAD --color'
@@ -19,6 +20,11 @@ alias git-clean="git remote prune origin;git branch --merged master | grep -v \"
 
 alias vssh='cd ~/code/vagrant/ && vagrant ssh'
 alias vmount='cd ~/code/vagrant/src/'
+alias weather='curl wttr.in/ottawa'
+
+# thefuck https://github.com/nvbn/thefuck
+eval "$(thefuck --alias)"
+alias f='fuck'
 
 bundle-up () {
   git checkout master

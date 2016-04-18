@@ -1,2 +1,6 @@
 *.swp
 *.swo
+
+# ignore ctags tag cache file
+/tags
+.tags_swap

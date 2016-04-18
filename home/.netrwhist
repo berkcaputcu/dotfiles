@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/vagrant/src'
+let g:netrw_dirhist_2='/home/vagrant/src/Shopify'
+let g:netrw_dirhist_3='/home/vagrant/.vim'
+let g:netrw_dirhist_4='/home/vagrant/src/Shopify'
+let g:netrw_dirhist_5='/home/vagrant/src/Shopify/app/models/checkout'
+let g:netrw_dirhist_6='/Users/berkcaputcu/.vim/bundle/vim-test'
+let g:netrw_dirhist_7='/Users/berkcaputcu/.oh-my-zsh'
