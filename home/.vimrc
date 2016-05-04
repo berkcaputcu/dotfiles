@@ -15,7 +15,7 @@ colorscheme solarized
 highlight DiffAdd ctermfg=250 ctermbg=22
 highlight DiffDelete ctermfg=250 ctermbg=52
 highlight DiffChange ctermfg=250 ctermbg=25
-highlight DiffText ctermfg=195 ctermbg=130 cterm=bold
+highlight DiffText ctermfg=250 ctermbg=130 cterm=bold
 
 " Match
 runtime macros/matchit.vim
@@ -119,12 +119,24 @@ noremap ,p :set pastetoggle=<CR>
 nnoremap j gj
 nnoremap k gk
 
+" search results in the middle
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
 " Buffers
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bb :bp<CR>
 
 " Windows
 nnoremap ,, <C-w>w
+nnoremap <C-w>h 10<c-w><
+nnoremap <C-w>l 10<c-w>>
+nnoremap <C-w>j 10<c-w>+
+nnoremap <C-w>k 10<c-w>-
 
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
@@ -147,19 +159,52 @@ nnoremap <leader>sp <C-w>s<C-w>j
 
 " Tabs
 map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
 
 " Shift to go between tabs
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 
 " Git
-map <leader>gs :Gstatus<CR>
-map <leader>gc :Gcommit<CR>
-map <leader>gb :Gblame<CR>
-map <leader>gr :Gbrowse<CR>
-map <leader>gd :Gdiff<CR>
+function! PushToCurrentBranch()
+  let branch = fugitive#statusline()
+  let branch = substitute(branch, '\c\v\[?GIT\(([a-z0-9\-_\./:]+)\)\]?', $BRANCH.' \1', 'g')
+  execute "Dispatch git push origin " . branch
+endfunction
+
+function! BundleUp()
+  execute "silent !Git checkout master"
+  execute "silent !Git pull origin master"
+  execute "redraw!"
+"  execute "Dispatch /opt/dev/bin/dev up"
+endfunction
+
+nnoremap <leader>ggp :call PushToCurrentBranch()<CR>
+nnoremap <leader>ggl :call BundleUp()<CR>
+nnoremap <leader>ggb :Git branch<space>
+nnoremap <leader>ggc :Git checkout<space>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gb :Gblame<CR>
+noremap <leader>gr :Gbrowse<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gp :Ggrep<space>
+
+
+" Testing
+function! RunTestOnlyScript(options)
+  let filename_to_test = expand('%:t:r')
+  execute "Dispatch ruby ~/dotfiles/scripts/testonly.rb " . filename_to_test . " " . a:options
+endfunction
+
+nnoremap <leader>tt :call RunTestOnlyScript("")<CR>
+nnoremap <leader>ta :call RunTestOnlyScript("-a")<CR>
+nnoremap <leader>to :Dispatch ruby ~/dotfiles/scripts/testonly.rb<space>
+nnoremap <leader>tc :Dispatch dev test %<CR>
+
+nnoremap <leader>co :Copen<CR>
+
+" Convert hash rockets to new syntax
+nnoremap <leader>{ :%s/:\([^=,'"]*\) =>/\1:/gc<CR>
 
 " Save and Quit
 nnoremap <leader>q :close<CR>
