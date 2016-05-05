@@ -1,0 +1,7 @@
+.bundle
+*.swp
+*.orig
+.git
+
+vendor/bundle
+vendor/GeoIP*.dat

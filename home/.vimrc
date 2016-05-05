@@ -41,8 +41,10 @@ set scrolloff=5
 " Ignorecase
 set ignorecase
 
-" Higlight current line
-set cursorline
+" Higlight current line unless it's a diff view
+if !&diff
+  set cursorline
+endif
 
 " Relative line numbers
 set relativenumber
@@ -73,6 +75,9 @@ set autowrite
 
 " Fugitive - branch in status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Disable GitGutter
+let g:gitgutter_enabled = 0
 
 " Mapping
 let mapleader="\<Space>"
@@ -175,7 +180,7 @@ function! BundleUp()
   execute "silent !Git checkout master"
   execute "silent !Git pull origin master"
   execute "redraw!"
-"  execute "Dispatch /opt/dev/bin/dev up"
+  execute "Dispatch /opt/dev/bin/dev up"
 endfunction
 
 nnoremap <leader>ggp :call PushToCurrentBranch()<CR>
@@ -189,6 +194,8 @@ noremap <leader>gr :Gbrowse<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Ggrep<space>
 
+" Gitgutter mappings
+nnoremap <leader>ggt :GitGutterToggle<CR>
 
 " Testing
 function! RunTestOnlyScript(options)
@@ -230,6 +237,7 @@ nnoremap <leader>ev :e ~/.vimrc<CR>
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_regexp = 1
 
 " Silversearch
 set runtimepath^=~/.vim/bundle/ag
