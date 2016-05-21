@@ -1,5 +1,9 @@
 execute pathogen#infect()
+
+" Syntax coloring
 syntax on
+set synmaxcol=200 " don't color after 200th column
+
 filetype plugin indent on
 
 au BufWritePost *.rb silent! !eval 'rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log' &
@@ -21,6 +25,8 @@ highlight DiffText ctermfg=250 ctermbg=130 cterm=bold
 runtime macros/matchit.vim
 
 " Swap files are annoying
+set nobackup
+set nowritebackup
 set noswapfile
 
 " Tab to spaces
@@ -82,6 +88,7 @@ let g:gitgutter_enabled = 0
 " Mapping
 let mapleader="\<Space>"
 nnoremap <leader>c :nohlsearch<CR>
+nnoremap <leader>cc :nohlsearch<CR>
 
 " Normal mode on jk
 imap jk <esc>
