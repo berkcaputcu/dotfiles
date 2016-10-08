@@ -109,9 +109,12 @@ noremap ,jl :CtrlP lib<CR>
 noremap ,jC :CtrlP config<CR>
 noremap ,jV :CtrlP vendor<CR>
 noremap ,jt :CtrlP test<CR>
-noremap ,jf :CtrlP test/fixtures<CR>
+noremap ,jtf :CtrlP test/fixtures<CR>
 noremap ,jpm :CtrlP app/models/payments<CR>
+noremap ,jpv :CtrlP app/views/admin/payments<CR>
+noremap ,jpc :CtrlP app/controllers/admin/payments<CR>
 noremap ,jpt :CtrlP test/unit/payments<CR>
+noremap ,jpf :CtrlP test/functional/admin/payments<CR>
 
 nmap <leader>n :NERDTree<CR>
 
