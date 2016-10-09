@@ -1,10 +1,41 @@
-execute pathogen#infect()
+" Install vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'rking/ag.vim'
+Plugin 'wincent/command-t'
+Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-abolish'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'tpope/vim-unimpaired'
+
+call vundle#end()
+
+filetype plugin indent on
 
 " Syntax coloring
 syntax on
 set synmaxcol=200 " don't color after 200th column
-
-filetype plugin indent on
 
 au BufWritePost *.rb silent! !eval 'rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log' &
 
@@ -97,24 +128,24 @@ imap jk <esc>
 nnoremap ; :
 
 " Faster rails paths
-noremap ,ja :CtrlP app<CR>
-noremap ,jd :CtrlP db<CR>
-noremap ,jm :CtrlP app/models<CR>
-noremap ,jj :CtrlP app/jobs<CR>
-noremap ,jc :CtrlP app/controllers<CR>
-noremap ,jv :CtrlP app/views<CR>
-noremap ,jh :CtrlP app/helpers<CR>
-noremap ,js :CtrlP app/services<CR>
-noremap ,jl :CtrlP lib<CR>
-noremap ,jC :CtrlP config<CR>
-noremap ,jV :CtrlP vendor<CR>
-noremap ,jt :CtrlP test<CR>
-noremap ,jtf :CtrlP test/fixtures<CR>
-noremap ,jpm :CtrlP app/models/payments<CR>
-noremap ,jpv :CtrlP app/views/admin/payments<CR>
-noremap ,jpc :CtrlP app/controllers/admin/payments<CR>
-noremap ,jpt :CtrlP test/unit/payments<CR>
-noremap ,jpf :CtrlP test/functional/admin/payments<CR>
+noremap ,ja :CommandT app<CR>
+noremap ,jd :CommandT db<CR>
+noremap ,jm :CommandT app/models<CR>
+noremap ,jj :CommandT app/jobs<CR>
+noremap ,jc :CommandT app/controllers<CR>
+noremap ,jv :CommandT app/views<CR>
+noremap ,jh :CommandT app/helpers<CR>
+noremap ,js :CommandT app/services<CR>
+noremap ,jl :CommandT lib<CR>
+noremap ,jC :CommandT config<CR>
+noremap ,jV :CommandT vendor<CR>
+noremap ,jt :CommandT test<CR>
+noremap ,jtf :CommandT test/fixtures<CR>
+noremap ,jpm :CommandT app/models/payments<CR>
+noremap ,jpv :CommandT app/views/admin/payments<CR>
+noremap ,jpc :CommandT app/controllers/admin/payments<CR>
+noremap ,jpt :CommandT test/unit/payments<CR>
+noremap ,jpf :CommandT test/functional/admin/payments<CR>
 
 nmap <leader>n :NERDTree<CR>
 
@@ -243,11 +274,15 @@ onoremap E $
 nnoremap <leader>sv :source ~/.vimrc<CR>
 nnoremap <leader>ev :e ~/.vimrc<CR>
 
-" CtrlP settings
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_regexp = 1
+" commmand-t settings
+nnoremap <C-p> :CommandT<CR>
+nnoremap <C-b> :CommandTBuffer<CR>
+let g:CommandTFileScanner = 'git'
+let g:CommandTMaxFiles = 10000000
+let g:CommandTMaxHeight = 10
+
+highlight CommandTHighlightColor term=reverse cterm=reverse ctermfg=0 ctermbg=7 guibg=Grey40 gui=bold
+let g:CommandTHighlightColor = 'CommandTHighlightColor'
 
 " lightline settings
 set noshowmode " don't show default vim message
@@ -255,14 +290,12 @@ set noshowmode " don't show default vim message
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ],
-      \             [ 'ctrlpmark' ] ]
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
       \   'readonly': 'LightLineReadonly',
       \   'modified': 'LightLineModified',
-      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
@@ -296,33 +329,6 @@ function! LightLineFugitive()
     return branch !=# '' ? "\ue0a0 ".branch : ''
   endif
   return ''
-endfunction
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
 endfunction
 
 " Silversearch
