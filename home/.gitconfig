@@ -18,6 +18,8 @@
   rebase = true
 [merge]
   tool = vimdiff
+[rebase]
+  autosquash = true
 [color]
   branch = auto
   diff = auto
