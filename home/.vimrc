@@ -28,6 +28,8 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/SQLUtilities'
 
 call vundle#end()
 
@@ -113,6 +115,9 @@ set autowrite
 " Fugitive - branch in status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
+" auto diffupdate
+autocmd BufWritePost * if &diff == 1 | diffupdate | endif
+
 " Disable GitGutter
 let g:gitgutter_enabled = 0
 
@@ -139,13 +144,12 @@ noremap ,js :CommandT app/services<CR>
 noremap ,jl :CommandT lib<CR>
 noremap ,jC :CommandT config<CR>
 noremap ,jV :CommandT vendor<CR>
-noremap ,jt :CommandT test<CR>
+noremap ,jtt :CommandT test<CR>
+noremap ,jT :CommandT test<CR>
 noremap ,jtf :CommandT test/fixtures<CR>
-noremap ,jpm :CommandT app/models/payments<CR>
-noremap ,jpv :CommandT app/views/admin/payments<CR>
-noremap ,jpc :CommandT app/controllers/admin/payments<CR>
-noremap ,jpt :CommandT test/unit/payments<CR>
-noremap ,jpf :CommandT test/functional/admin/payments<CR>
+noremap ,jpt :CommandT components/shopify_payments/test<CR>
+noremap ,jpm :CommandT components/shopify_payments/app/models/payments<CR>
+noremap ,jpt :CommandT components/shopify_payments/test/unit/payments<CR>
 
 nmap <leader>n :NERDTree<CR>
 
@@ -154,6 +158,9 @@ noremap <leader>b ibinding.pry<Esc>==
 
 " paste last yank
 noremap <leader>p "0p
+
+" copy all
+nnoremap <leader>a ggyG
 
 " copy current file path
 nmap <leader>d :let @* = expand("%")<CR>
@@ -244,7 +251,7 @@ function! RunTestOnlyScript(options)
   execute "Dispatch ruby ~/dotfiles/scripts/testonly.rb " . filename_to_test . " " . a:options
 endfunction
 
-nnoremap <leader>tt :call RunTestOnlyScript("")<CR>
+" nnoremap <leader>tt :call RunTestOnlyScript("")<CR>
 nnoremap <leader>ta :call RunTestOnlyScript("-a")<CR>
 nnoremap <leader>to :Dispatch ruby ~/dotfiles/scripts/testonly.rb<space>
 nnoremap <leader>tc :Dispatch dev test %<CR>

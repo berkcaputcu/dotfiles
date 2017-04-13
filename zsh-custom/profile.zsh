@@ -81,3 +81,6 @@ rebase-master() {
     git push origin +$prev_branch
   fi
 }
+
+export NVM_DIR="/Users/berkcaputcu/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
