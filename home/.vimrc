@@ -124,7 +124,6 @@ let g:gitgutter_enabled = 0
 " Mapping
 let mapleader="\<Space>"
 nnoremap <leader>c :nohlsearch<CR>
-nnoremap <leader>cc :nohlsearch<CR>
 
 " Normal mode on jk
 imap jk <esc>
