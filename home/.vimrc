@@ -17,7 +17,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive', {'pinned': 1}
 Plugin 'tpope/vim-git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-rails'
@@ -28,8 +28,9 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/Align'
-Plugin 'vim-scripts/SQLUtilities'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
 
 call vundle#end()
 
@@ -39,13 +40,14 @@ filetype plugin indent on
 syntax on
 set synmaxcol=200 " don't color after 200th column
 
-au BufWritePost *.rb silent! !eval 'rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log' &
+" generate ctags
+nnoremap <leader>ct :! rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log<CR>
 
 " System clipboard
 set clipboard=unnamed
 
 " Theme
-set background=dark
+set background=dark " dark or light
 colorscheme solarized
 
 " Diff theme
@@ -147,8 +149,8 @@ noremap ,jtt :CommandT test<CR>
 noremap ,jT :CommandT test<CR>
 noremap ,jtf :CommandT test/fixtures<CR>
 noremap ,jpt :CommandT components/shopify_payments/test<CR>
+noremap ,jpp :CommandT components/shopify_payments<CR>
 noremap ,jpm :CommandT components/shopify_payments/app/models/payments<CR>
-noremap ,jpt :CommandT components/shopify_payments/test/unit/payments<CR>
 
 nmap <leader>n :NERDTree<CR>
 
@@ -279,6 +281,15 @@ onoremap E $
 " Source this file
 nnoremap <leader>sv :source ~/.vimrc<CR>
 nnoremap <leader>ev :e ~/.vimrc<CR>
+
+" vim-notes settings
+:let g:notes_directories = ['~/Desktop/docs/notes']
+:let g:notes_suffix = '.vmnt'
+:let g:notes_tab_indents = 0
+:let g:notes_conceal_code = 0
+:let g:notes_conceal_url = 0
+:let g:notes_smart_quotes = 0
+:let g:notes_list_bullets=[]
 
 " commmand-t settings
 nnoremap <C-p> :CommandT<CR>
