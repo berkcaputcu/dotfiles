@@ -1,0 +1,3 @@
+[submodule "home/.vim/bundle/fzf.vim"]
+	path = home/.vim/bundle/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git

@@ -25,10 +25,6 @@ alias weather='curl wttr.in/ottawa'
 alias shipit='dev open shipit'
 alias admin='dev open admin'
 
-# thefuck https://github.com/nvbn/thefuck
-eval "$(thefuck --alias)"
-alias f='fuck'
-
 bundle-up () {
   git checkout master
   git pull origin master

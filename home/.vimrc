@@ -7,7 +7,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rking/ag.vim'
-Plugin 'wincent/command-t'
 Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'AndrewRadev/splitjoin.vim'
@@ -17,7 +16,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive', {'pinned': 1}
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-rails'
@@ -31,6 +30,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 
@@ -47,7 +48,7 @@ nnoremap <leader>ct :! rm -f tags; ctags -R --languages=ruby --exclude=.git --ex
 set clipboard=unnamed
 
 " Theme
-set background=dark " dark or light
+set background=dark
 colorscheme solarized
 
 " Diff theme
@@ -134,23 +135,23 @@ imap jk <esc>
 nnoremap ; :
 
 " Faster rails paths
-noremap ,ja :CommandT app<CR>
-noremap ,jd :CommandT db<CR>
-noremap ,jm :CommandT app/models<CR>
-noremap ,jj :CommandT app/jobs<CR>
-noremap ,jc :CommandT app/controllers<CR>
-noremap ,jv :CommandT app/views<CR>
-noremap ,jh :CommandT app/helpers<CR>
-noremap ,js :CommandT app/services<CR>
-noremap ,jl :CommandT lib<CR>
-noremap ,jC :CommandT config<CR>
-noremap ,jV :CommandT vendor<CR>
-noremap ,jtt :CommandT test<CR>
-noremap ,jT :CommandT test<CR>
-noremap ,jtf :CommandT test/fixtures<CR>
-noremap ,jpt :CommandT components/shopify_payments/test<CR>
-noremap ,jpp :CommandT components/shopify_payments<CR>
-noremap ,jpm :CommandT components/shopify_payments/app/models/payments<CR>
+noremap ,ja :Files app<CR>
+noremap ,jd :Files db<CR>
+noremap ,jm :Files app/models<CR>
+noremap ,jj :Files app/jobs<CR>
+noremap ,jc :Files app/controllers<CR>
+noremap ,jv :Files app/views<CR>
+noremap ,jh :Files app/helpers<CR>
+noremap ,js :Files app/services<CR>
+noremap ,jl :Files lib<CR>
+noremap ,jC :Files config<CR>
+noremap ,jV :Files vendor<CR>
+noremap ,jtt :Files test<CR>
+noremap ,jT :Files test<CR>
+noremap ,jtf :Files test/fixtures<CR>
+noremap ,jpt :Files components/shopify_payments/test<CR>
+noremap ,jpp :Files components/shopify_payments<CR>
+noremap ,jpm :Files components/shopify_payments/app/models/payments<CR>
 
 nmap <leader>n :NERDTree<CR>
 
@@ -292,14 +293,20 @@ nnoremap <leader>ev :e ~/.vimrc<CR>
 :let g:notes_list_bullets=[]
 
 " commmand-t settings
-nnoremap <C-p> :CommandT<CR>
-nnoremap <C-b> :CommandTBuffer<CR>
-let g:CommandTFileScanner = 'git'
-let g:CommandTMaxFiles = 10000000
-let g:CommandTMaxHeight = 10
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-l> :Lines<CR>
+nnoremap <C-t> :Tags<CR>
 
-highlight CommandTHighlightColor term=reverse cterm=reverse ctermfg=0 ctermbg=7 guibg=Grey40 gui=bold
-let g:CommandTHighlightColor = 'CommandTHighlightColor'
+let g:fzf_tags_command = 'ctags -R --languages=ruby --exclude=.git --exclude=log'
+
+" Legacy CommandT settings
+" let g:CommandTFileScanner = 'git'
+" let g:CommandTMaxFiles = 10000000
+" let g:CommandTMaxHeight = 10
+
+" highlight CommandTHighlightColor term=reverse cterm=reverse ctermfg=0 ctermbg=7 guibg=Grey40 gui=bold
+" let g:CommandTHighlightColor = 'CommandTHighlightColor'
 
 " lightline settings
 set noshowmode " don't show default vim message
