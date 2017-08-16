@@ -1,0 +1,286 @@
+{
+  "Working Directory" : "\/Users\/berkcaputcu\/code",
+  "Prompt Before Closing 2" : 2,
+  "Selected Text Color" : {
+    "Green Component" : 0.5648584,
+    "Red Component" : 0.5059919,
+    "Blue Component" : 0.5636365
+  },
+  "Rows" : 40,
+  "Ansi 11 Color" : {
+    "Green Component" : 0.4071767,
+    "Red Component" : 0.3243662,
+    "Blue Component" : 0.4385056
+  },
+  "Use Italic Font" : false,
+  "Foreground Color" : {
+    "Green Component" : 0.5096293,
+    "Red Component" : 0.4405802,
+    "Blue Component" : 0.516858
+  },
+  "Right Option Key Sends" : 0,
+  "Character Encoding" : 4,
+  "Selection Color" : {
+    "Green Component" : 0.1557593,
+    "Red Component" : 0,
+    "Blue Component" : 0.1937014
+  },
+  "Triggers" : [
+
+  ],
+  "Blend" : 0.3,
+  "Mouse Reporting" : true,
+  "Ansi 4 Color" : {
+    "Green Component" : 0.4626595,
+    "Red Component" : 0.1275488,
+    "Blue Component" : 0.7823142
+  },
+  "Non-ASCII Anti Aliased" : true,
+  "Sync Title" : false,
+  "Disable Window Resizing" : true,
+  "Close Sessions On End" : true,
+  "Jobs to Ignore" : [
+    "rlogin",
+    "slogin",
+    "telnet"
+  ],
+  "Scrollback With Status Bar" : false,
+  "Scrollback Lines" : 0,
+  "Scrollback in Alternate Screen" : true,
+  "Hide After Opening" : false,
+  "Flashing Bell" : true,
+  "BM Growl" : true,
+  "Ansi 3 Color" : {
+    "Green Component" : 0.4675142,
+    "Red Component" : 0.6474648,
+    "Blue Component" : 0.02348481
+  },
+  "Shortcut" : "",
+  "Background Image Location" : "",
+  "Bold Color" : {
+    "Green Component" : 0.5648584,
+    "Red Component" : 0.5059919,
+    "Blue Component" : 0.5636365
+  },
+  "Unlimited Scrollback" : true,
+  "Custom Command" : "No",
+  "Smart Selection Rules" : [
+    {
+      "notes" : "Word bounded by whitespace",
+      "regex" : "\\S+",
+      "precision" : "low"
+    },
+    {
+      "notes" : "C++ namespace::identifier",
+      "regex" : "([a-zA-Z0-9_]+::)+[a-zA-Z0-9_]+",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Paths",
+      "regex" : "\\~?\/?([[:letter:][:number:]._-]+\/+)+[[:letter:][:number:]._-]+\/?",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Quoted string",
+      "regex" : "@?\"(?:[^\"\\\\]|\\\\.)*\"",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Java\/Python include paths",
+      "regex" : "([[:letter:][:number:]._]+\\.)+[[:letter:][:number:]._]+",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "mailto URL",
+      "regex" : "\\bmailto:([a-z0-9A-Z_]+@)?([a-zA-Z0-9\\-]+\\.)*[a-zA-Z0-9\\-]+\\b",
+      "precision" : "normal"
+    },
+    {
+      "notes" : "Obj-C selector",
+      "regex" : "@selector\\([^)]+\\)",
+      "precision" : "high"
+    },
+    {
+      "notes" : "email address",
+      "regex" : "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b",
+      "precision" : "high"
+    },
+    {
+      "notes" : "HTTP URL",
+      "regex" : "https?:\/\/([a-z0-9A-Z]+(:[a-zA-Z0-9]+)?@)?[a-z0-9A-Z]+(\\.[a-z0-9A-Z]+)*((:[0-9]+)?)(\/[a-zA-Z0-9;\/\\.\\-_+%~?&@=#\\(\\)]*)?",
+      "precision" : "very_high"
+    },
+    {
+      "notes" : "SSH URL",
+      "regex" : "\\bssh:([a-z0-9A-Z_]+@)?([a-zA-Z0-9\\-]+\\.)*[a-zA-Z0-9\\-]+\\b",
+      "precision" : "very_high"
+    },
+    {
+      "notes" : "Telnet URL",
+      "regex" : "\\btelnet:([a-z0-9A-Z_]+@)?([a-zA-Z0-9\\-]+\\.)*[a-zA-Z0-9\\-]+\\b",
+      "precision" : "very_high"
+    }
+  ],
+  "Keyboard Map" : {
+    "0xf72d-0x20000" : {
+      "Action" : 8
+    },
+    "0xf701-0x220000" : {
+      "Action" : 6
+    },
+    "0xf702-0x320000" : {
+      "Action" : 2
+    },
+    "0xf703-0x380000" : {
+      "Action" : 0
+    },
+    "0xf729-0x20000" : {
+      "Action" : 5
+    },
+    "0xf72c-0x20000" : {
+      "Action" : 9
+    },
+    "0xf72b-0x20000" : {
+      "Action" : 4
+    },
+    "0xf700-0x220000" : {
+      "Action" : 7
+    },
+    "0xf702-0x380000" : {
+      "Action" : 2
+    },
+    "0xf703-0x320000" : {
+      "Action" : 0
+    }
+  },
+  "Log Directory" : "",
+  "Use Canonical Parser" : false,
+  "Ansi 14 Color" : {
+    "Green Component" : 0.5648584,
+    "Red Component" : 0.5059919,
+    "Blue Component" : 0.5636365
+  },
+  "Ansi 2 Color" : {
+    "Green Component" : 0.5411549,
+    "Red Component" : 0.4497745,
+    "Blue Component" : 0.02020876
+  },
+  "Background Image Is Tiled" : false,
+  "Send Code When Idle" : false,
+  "ASCII Anti Aliased" : true,
+  "Tags" : [
+
+  ],
+  "Ansi 9 Color" : {
+    "Green Component" : 0.213253,
+    "Red Component" : 0.7417626,
+    "Blue Component" : 0.07353044
+  },
+  "Use Bold Font" : true,
+  "Silence Bell" : true,
+  "Ansi 12 Color" : {
+    "Green Component" : 0.5096293,
+    "Red Component" : 0.4405802,
+    "Blue Component" : 0.516858
+  },
+  "Window Type" : 0,
+  "Allow Title Reporting" : false,
+  "Use Bright Bold" : true,
+  "Cursor Text Color" : {
+    "Green Component" : 0.1557593,
+    "Red Component" : 0,
+    "Blue Component" : 0.1937014
+  },
+  "Default Bookmark" : "No",
+  "Cursor Color" : {
+    "Red Component" : 0.8248554468154907,
+    "Color Space" : "Calibrated",
+    "Blue Component" : 0.02468466386198997,
+    "Alpha Component" : 1,
+    "Green Component" : 0.4198459088802338
+  },
+  "Disable Smcup Rmcup" : false,
+  "Name" : "Berk - Solarized",
+  "Blinking Cursor" : false,
+  "Guid" : "EFC16D6A-1217-48C3-B6BD-4819D0C1F28D",
+  "Ansi 1 Color" : {
+    "Green Component" : 0.1084066,
+    "Red Component" : 0.8192698,
+    "Blue Component" : 0.1414571
+  },
+  "Idle Code" : 0,
+  "Ansi 10 Color" : {
+    "Green Component" : 0.3566596,
+    "Red Component" : 0.2767199,
+    "Blue Component" : 0.3829849
+  },
+  "Ansi 8 Color" : {
+    "Green Component" : 0.1178361,
+    "Red Component" : 0,
+    "Blue Component" : 0.1517027
+  },
+  "Automatically Log" : false,
+  "Smart Cursor Color" : false,
+  "Semantic History" : {
+    "text" : "\/Users\/berkcaputcu\/code\/vagrant_open_subl.py \\3 \\4",
+    "action" : "best editor",
+    "editor" : "com.sublimetext.3"
+  },
+  "Ambiguous Double Width" : false,
+  "Blur Radius" : 0.1,
+  "Cursor Type" : 2,
+  "Ansi 0 Color" : {
+    "Green Component" : 0.1557593,
+    "Red Component" : 0,
+    "Blue Component" : 0.1937014
+  },
+  "Blur" : false,
+  "Normal Font" : "Monaco 12",
+  "Vertical Spacing" : 1,
+  "Disable Printing" : false,
+  "Ansi 7 Color" : {
+    "Green Component" : 0.8900124,
+    "Red Component" : 0.9161106,
+    "Blue Component" : 0.797811
+  },
+  "Space" : -1,
+  "Command" : "",
+  "Terminal Type" : "xterm",
+  "Horizontal Spacing" : 1,
+  "Option Key Sends" : 0,
+  "Blink Allowed" : false,
+  "Minimum Contrast" : 0,
+  "Ansi 15 Color" : {
+    "Green Component" : 0.9579439,
+    "Red Component" : 0.9894342,
+    "Blue Component" : 0.8640598
+  },
+  "Ansi 6 Color" : {
+    "Green Component" : 0.5708236,
+    "Red Component" : 0.1467953,
+    "Blue Component" : 0.5250227
+  },
+  "Transparency" : 0,
+  "Initial Text" : "",
+  "Background Color" : {
+    "Green Component" : 0.1178361,
+    "Red Component" : 0,
+    "Blue Component" : 0.1517027
+  },
+  "Screen" : -1,
+  "Non Ascii Font" : "RobotoMonoForPowerline-Regular 12",
+  "Ansi 13 Color" : {
+    "Green Component" : 0.338963,
+    "Red Component" : 0.3479863,
+    "Blue Component" : 0.7290844
+  },
+  "Columns" : 134,
+  "Visual Bell" : true,
+  "Custom Directory" : "Yes",
+  "Ansi 5 Color" : {
+    "Green Component" : 0.1080246,
+    "Red Component" : 0.7773894,
+    "Blue Component" : 0.4351664
+  },
+  "Set Local Environment Vars" : true
+}
