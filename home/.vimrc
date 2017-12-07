@@ -295,7 +295,6 @@ nnoremap <leader>ev :e ~/.vimrc<CR>
 " commmand-t settings
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-l> :Lines<CR>
 nnoremap <C-t> :Tags<CR>
 
 let g:fzf_tags_command = 'ctags -R --languages=ruby --exclude=.git --exclude=log'

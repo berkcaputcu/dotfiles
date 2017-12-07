@@ -18,6 +18,8 @@
   rebase = true
 [merge]
   tool = vimdiff
+[mergetool]
+  keepBackup = false
 [rebase]
   autosquash = true
 [color]
