@@ -268,6 +268,8 @@ endfunction
 nnoremap <leader>tt :Dispatch /opt/dev/bin/dev test<CR>
 nnoremap <leader>tc :Dispatch /opt/dev/bin/dev test %<CR>
 nnoremap <leader>tb :Dispatch /opt/dev/bin/dev test --include-branch-commits<CR>
+
+" run test on selected words
 vnoremap <leader>tt "zy:Dispatch /opt/dev/bin/dev test % -n /`=Regexify(@z)`/<CR>
 
 " repeat the last command
