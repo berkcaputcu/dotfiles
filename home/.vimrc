@@ -41,8 +41,11 @@ filetype plugin indent on
 syntax on
 set synmaxcol=200 " don't color after 200th column
 
+" Mapping leader key
+let mapleader="\<Space>"
+
 " generate ctags
-nnoremap <leader>ct :! rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log<CR>
+nnoremap <leader>gt :! rm -f tags; ctags -R --languages=ruby --exclude=.git --exclude=log<CR>
 
 " System clipboard
 set clipboard=unnamed
@@ -104,6 +107,7 @@ set wildmenu
 set showmatch
 set incsearch
 set hlsearch
+nnoremap <leader>c :nohlsearch<CR>
 
 " Status bar
 set laststatus=2
@@ -123,10 +127,6 @@ autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 
 " Disable GitGutter
 let g:gitgutter_enabled = 0
-
-" Mapping
-let mapleader="\<Space>"
-nnoremap <leader>c :nohlsearch<CR>
 
 " Normal mode on jk
 imap jk <esc>
@@ -150,7 +150,8 @@ noremap ,jtt :Files test<CR>
 noremap ,jT :Files test<CR>
 noremap ,jtf :Files test/fixtures<CR>
 noremap ,jpt :Files components/shopify_payments/test<CR>
-noremap ,jpp :Files components/shopify_payments<CR>
+noremap ,jsp :Files components/shopify_payments<CR>
+noremap ,jpp :Files components/payment_processing<CR>
 noremap ,jpm :Files components/shopify_payments/app/models/payments<CR>
 
 nmap <leader>n :NERDTree<CR>
@@ -253,12 +254,27 @@ function! RunTestOnlyScript(options)
   execute "Dispatch ruby ~/dotfiles/scripts/testonly.rb " . filename_to_test . " " . a:options
 endfunction
 
-" nnoremap <leader>tt :call RunTestOnlyScript("")<CR>
-nnoremap <leader>ta :call RunTestOnlyScript("-a")<CR>
-nnoremap <leader>to :Dispatch ruby ~/dotfiles/scripts/testonly.rb<space>
-nnoremap <leader>tc :Dispatch dev test %<CR>
+function! Regexify(text)
+  let regex_text=escape(a:text, "'()/\.*$^~[]\\\"")
 
-nnoremap <leader>co :Copen<CR>
+  " escaping for oh my zsh
+  let regex_text=escape(regex_text, "'()/\.*$^~[]\\\"")
+
+  let regex_text=substitute(regex_text, ' ', '_', 'g')
+
+  return regex_text
+endfunction
+
+nnoremap <leader>tt :Dispatch /opt/dev/bin/dev test<CR>
+nnoremap <leader>tc :Dispatch /opt/dev/bin/dev test %<CR>
+nnoremap <leader>tb :Dispatch /opt/dev/bin/dev test --include-branch-commits<CR>
+vnoremap <leader>tt "zy:Dispatch /opt/dev/bin/dev test % -n /`=Regexify(@z)`/<CR>
+
+" repeat the last command
+nnoremap <leader>tr :Dispatch /opt/dev/bin/dev test % -n /`=Regexify(@z)`/<CR>
+
+" open the latest Dispatch window
+nnoremap <leader>oo :Copen<CR>
 
 " Convert hash rockets to new syntax
 nnoremap <leader>{ :%s/:\([^=,'"]*\) =>/\1:/gc<CR>
@@ -291,6 +307,10 @@ nnoremap <leader>ev :e ~/.vimrc<CR>
 :let g:notes_conceal_url = 0
 :let g:notes_smart_quotes = 0
 :let g:notes_list_bullets=[]
+
+" vim-dispatch settings
+let g:dispatch_quickfix_height=20
+let g:dispatch_tmux_height=20
 
 " commmand-t settings
 nnoremap <C-p> :Files<CR>
