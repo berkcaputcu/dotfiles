@@ -18,7 +18,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -28,10 +28,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'xolox/vim-notes'
-Plugin 'xolox/vim-misc'
+Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
 
@@ -39,6 +39,7 @@ filetype plugin indent on
 
 " Syntax coloring
 syntax on
+set regexpengine=1 " use old regexp engine for performance
 set synmaxcol=200 " don't color after 200th column
 
 " Mapping leader key
@@ -125,9 +126,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " auto diffupdate
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 
-" Disable GitGutter
-let g:gitgutter_enabled = 0
-
 " Normal mode on jk
 imap jk <esc>
 
@@ -166,7 +164,7 @@ noremap <leader>p "0p
 nnoremap <leader>a ggyG
 
 " copy current file path
-nmap <leader>d :let @* = expand("%")<CR>
+nmap <leader>df :let @* = expand("%")<CR>
 
 " toggle paste mode before pasting
 noremap ,p :set pastetoggle=<CR>
@@ -211,7 +209,10 @@ nnoremap ,c <C-w>c
 nnoremap ,o <C-w>o
 
 nnoremap <leader>vs <C-w>v<C-w>l
-nnoremap <leader>sp <C-w>s<C-w>j
+nnoremap <leader>hs <C-w>s<C-w>j
+
+" folds
+nnoremap <leader>o zR
 
 " Tabs
 map <leader>tn :tabnew<cr>
@@ -245,9 +246,6 @@ noremap <leader>gr :Gbrowse<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Ggrep<space>
 
-" Gitgutter mappings
-nnoremap <leader>ggt :GitGutterToggle<CR>
-
 " Testing
 function! RunTestOnlyScript(options)
   let filename_to_test = expand('%:t:r')
@@ -265,15 +263,17 @@ function! Regexify(text)
   return regex_text
 endfunction
 
+nnoremap <leader>op :Dispatch /opt/dev/bin/dev open pr<CR>
 nnoremap <leader>tt :Dispatch /opt/dev/bin/dev test<CR>
 nnoremap <leader>tc :Dispatch /opt/dev/bin/dev test %<CR>
+nnoremap <leader>t' vi""zy:let @x=expand("%")<CR>:Dispatch /opt/dev/bin/dev test <C-r>x -n /`=Regexify(@z)`/<CR>
 nnoremap <leader>tb :Dispatch /opt/dev/bin/dev test --include-branch-commits<CR>
 
 " run test on selected words
-vnoremap <leader>tt "zy:Dispatch /opt/dev/bin/dev test % -n /`=Regexify(@z)`/<CR>
+vnoremap <leader>tt "zy:let @x=expand("%")<CR>:Dispatch /opt/dev/bin/dev test <C-r>x -n /`=Regexify(@z)`/<CR>
 
 " repeat the last command
-nnoremap <leader>tr :Dispatch /opt/dev/bin/dev test % -n /`=Regexify(@z)`/<CR>
+nnoremap <leader>tr :Dispatch /opt/dev/bin/dev test <C-r>x -n /`=Regexify(@z)`/<CR>
 
 " open the latest Dispatch window
 nnoremap <leader>oo :Copen<CR>
@@ -285,8 +285,12 @@ nnoremap <leader>{ :%s/:\([^=,'"]*\) =>/\1:/gc<CR>
 nnoremap <leader>q :close<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>s :w<CR>
-:command! Q q
-:command! Qa qa
+:command! -bang Q q<bang>
+:command! -bang Qa qa<bang>
+:command! -bang QA qa<bang>
+
+" Remove annoying K
+map K <Nop>
 
 " Save session
 nnoremap <leader>S :mksession<CR>
@@ -301,14 +305,31 @@ onoremap E $
 nnoremap <leader>sv :source ~/.vimrc<CR>
 nnoremap <leader>ev :e ~/.vimrc<CR>
 
-" vim-notes settings
-:let g:notes_directories = ['~/Desktop/docs/notes']
-:let g:notes_suffix = '.vmnt'
-:let g:notes_tab_indents = 0
-:let g:notes_conceal_code = 0
-:let g:notes_conceal_url = 0
-:let g:notes_smart_quotes = 0
-:let g:notes_list_bullets=[]
+" legacy vim-notes settings
+" :let g:notes_directories = ['~/Desktop/docs/notes']
+" :let g:notes_suffix = '.vmnt'
+" :let g:notes_tab_indents = 0
+" :let g:notes_conceal_code = 0
+" :let g:notes_conceal_url = 0
+" :let g:notes_smart_quotes = 0
+" :let g:notes_list_bullets=[]
+
+" vimwiki settings
+let g:vimwiki_list = [{ 'path': '~/Dropbox/Documents/vimwiki', 'path_html': '~/Dropbox/Documents/vimwiki/public_html/' }]
+let g:vimwiki_table_mappings = 0 " disable the <tab> mapping provided by vimwiki, which interferes with SuperTab
+nmap <leader>vw <Plug>VimwikiIndex
+nmap <leader>vt <Plug>VimwikiTabIndex
+nmap <leader>vq <Plug>VimwikiUISelect
+nmap <leader>dn <Plug>VimwikiMakeDiaryNote
+nmap <leader>di <Plug>VimwikiDiaryIndex
+nmap <leader>dc <Plug>VimwikiDiaryGenerateLinks
+nmap <leader>dt <Plug>VimwikiTabMakeDiaryNote
+nmap <leader>dy <Plug>VimwikiMakeYesterdayDiaryNote
+nmap <leader>vh <Plug>Vimwiki2HTML
+nmap <leader>vhh <Plug>Vimwiki2HTMLBrowse
+nmap <leader>vah :VimwikiAll2HTML<CR>
+nmap <leader>vr <Plug>VimwikiRenameLink
+nmap <Leader>vd <Plug>VimwikiDeleteLink
 
 " vim-dispatch settings
 let g:dispatch_quickfix_height=20
