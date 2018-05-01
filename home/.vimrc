@@ -253,10 +253,10 @@ function! RunTestOnlyScript(options)
 endfunction
 
 function! Regexify(text)
-  let regex_text=escape(a:text, "'()/\.*$^~[]\\\"")
+  let regex_text=escape(a:text, "'()/\.*$^~[]\\\"\?")
 
   " escaping for oh my zsh
-  let regex_text=escape(regex_text, "'()/\.*$^~[]\\\"")
+  let regex_text=escape(regex_text, "'()/\.*$^~[]\\\"\?")
 
   let regex_text=substitute(regex_text, ' ', '_', 'g')
 
@@ -266,11 +266,12 @@ endfunction
 nnoremap <leader>op :Dispatch /opt/dev/bin/dev open pr<CR>
 nnoremap <leader>tt :Dispatch /opt/dev/bin/dev test<CR>
 nnoremap <leader>tc :Dispatch /opt/dev/bin/dev test %<CR>
-nnoremap <leader>t' vi""zy:let @x=expand("%")<CR>:Dispatch /opt/dev/bin/dev test <C-r>x -n /`=Regexify(@z)`/<CR>
 nnoremap <leader>tb :Dispatch /opt/dev/bin/dev test --include-branch-commits<CR>
 
 " run test on selected words
 vnoremap <leader>tt "zy:let @x=expand("%")<CR>:Dispatch /opt/dev/bin/dev test <C-r>x -n /`=Regexify(@z)`/<CR>
+nmap <leader>t' vi"<leader>tt
+nmap <leader>ty <leader>t'
 
 " repeat the last command
 nnoremap <leader>tr :Dispatch /opt/dev/bin/dev test <C-r>x -n /`=Regexify(@z)`/<CR>
