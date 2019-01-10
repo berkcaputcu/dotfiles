@@ -2,6 +2,8 @@
   editor = vim
 	paper = vim
 	excludesfile = /Users/berkcaputcu/.gitignore_global
+[commit]
+    verbose = true
 [alias]
   ci = commit
   co = checkout
@@ -31,3 +33,7 @@
 [user]
 	name = berkcaputcu
 	email = berk.caputcu@shopify.com
+[diff]
+	algorithm = patience
+[protocol]
+	version = 2

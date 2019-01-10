@@ -152,7 +152,7 @@ noremap ,jsp :Files components/shopify_payments<CR>
 noremap ,jpp :Files components/payment_processing<CR>
 noremap ,jpm :Files components/shopify_payments/app/models/payments<CR>
 
-nmap <leader>n :NERDTree<CR>
+nmap <leader>n :NERDTreeFind<CR>
 
 " binding.pry
 noremap <leader>b ibinding.pry<Esc>==

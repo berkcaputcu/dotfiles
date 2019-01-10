@@ -7,6 +7,7 @@ alias be="bundle exec"
 alias rtest="ruby -Itest"
 
 alias cds="cd ~/code/Shopify"
+alias cdr="cd ~/code/russbot"
 alias cdc="cd ~/code/"
 alias cdd="cd ~/Desktop/docs"
 
