@@ -61,6 +61,9 @@ highlight DiffDelete ctermfg=250 ctermbg=52
 highlight DiffChange ctermfg=250 ctermbg=25
 highlight DiffText ctermfg=250 ctermbg=130 cterm=bold
 
+" Cursor line number highlight
+highlight CursorLineNr term=bold cterm=bold ctermfg=012 gui=bold
+
 " Match
 runtime macros/matchit.vim
 
@@ -109,6 +112,7 @@ set showmatch
 set incsearch
 set hlsearch
 nnoremap <leader>c :nohlsearch<CR>
+highlight Search ctermfg=DarkRed
 
 " Status bar
 set laststatus=2
