@@ -67,6 +67,14 @@ highlight CursorLineNr term=bold cterm=bold ctermfg=012 gui=bold
 " Match
 runtime macros/matchit.vim
 
+" Splitjoin
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
+
+" Ruby indentations
+let g:ruby_indent_assignment_style = 'variable'
+
+
 " Swap files are annoying
 set nobackup
 set nowritebackup
@@ -158,8 +166,11 @@ noremap ,jpm :Files components/shopify_payments/app/models/payments<CR>
 
 nmap <leader>n :NERDTreeFind<CR>
 
-" binding.pry
+" type: binding.pry
 noremap <leader>b ibinding.pry<Esc>==
+
+" type: ActiveRecord::Base.logger = Logger.new(STDOUT)
+noremap <leader>l iActiveRecord::Base.logger = Logger.new(STDOUT)<Esc>==
 
 " paste last yank
 noremap <leader>p "0p
