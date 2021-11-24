@@ -32,6 +32,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/goyo.vim'
+Plugin 'dense-analysis/ale'
 
 call vundle#end()
 
@@ -53,6 +54,7 @@ set clipboard=unnamed
 
 " Theme
 set background=dark
+" set background=light
 colorscheme solarized
 
 " Diff theme
@@ -330,6 +332,12 @@ nnoremap <leader>ev :e ~/.vimrc<CR>
 " :let g:notes_smart_quotes = 0
 " :let g:notes_list_bullets=[]
 
+" ale settings
+" let g:ale_linters = { 'ruby': ['rubocop'] }
+let g:ale_linters = { 'ruby': [] }
+let g:ale_linters_explicit = 1
+let g:ale_set_highlights = 1
+
 " vimwiki settings
 let g:vimwiki_list = [{ 'path': '~/Dropbox/Documents/vimwiki', 'path_html': '~/Dropbox/Documents/vimwiki/public_html/' }]
 let g:vimwiki_table_mappings = 0 " disable the <tab> mapping provided by vimwiki, which interferes with SuperTab
@@ -436,6 +444,8 @@ endif
 if index(g:fugitive_browse_handlers, function('ShopifyGitMirrorUrl')) < 0
   call insert(g:fugitive_browse_handlers, function('ShopifyGitMirrorUrl'))
 endif
+
+" vim-yaml-folds
 
 " Silversearch
 set runtimepath^=~/.vim/bundle/ag

@@ -1,3 +1,90 @@
+[submodule "home/.tmux/plugins/tmux-battery"]
+	path = home/.tmux/plugins/tmux-battery
+	url = https://github.com/tmux-plugins/tmux-battery
+[submodule "home/.tmux/plugins/tmux-copycat"]
+	path = home/.tmux/plugins/tmux-copycat
+	url = https://github.com/tmux-plugins/tmux-copycat
+[submodule "home/.tmux/plugins/tmux-yank"]
+	path = home/.tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "home/.tmux/plugins/tpm"]
+	path = home/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "home/.vim/bundle/Vundle.vim"]
+	path = home/.vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim
+[submodule "home/.vim/bundle/ag.vim"]
+	path = home/.vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim
 [submodule "home/.vim/bundle/fzf.vim"]
 	path = home/.vim/bundle/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
+	url = https://github.com/junegunn/fzf.vim
+[submodule "home/.vim/bundle/goyo.vim"]
+	path = home/.vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "home/.vim/bundle/lightline.vim"]
+	path = home/.vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "home/.vim/bundle/nerdtree"]
+	path = home/.vim/bundle/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule "home/.vim/bundle/splitjoin.vim"]
+	path = home/.vim/bundle/splitjoin.vim
+	url = https://github.com/AndrewRadev/splitjoin.vim
+[submodule "home/.vim/bundle/supertab"]
+	path = home/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "home/.vim/bundle/vim-abolish"]
+	path = home/.vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "home/.vim/bundle/vim-colors-solarized"]
+	path = home/.vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized
+[submodule "home/.vim/bundle/vim-commentary"]
+	path = home/.vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "home/.vim/bundle/vim-dispatch"]
+	path = home/.vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule "home/.vim/bundle/vim-endwise"]
+	path = home/.vim/bundle/vim-endwise
+	url = https://github.com/tpope/vim-endwise
+[submodule "home/.vim/bundle/vim-fugitive"]
+	path = home/.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "home/.vim/bundle/vim-git"]
+	path = home/.vim/bundle/vim-git
+	url = https://github.com/tpope/vim-git
+[submodule "home/.vim/bundle/vim-rails"]
+	path = home/.vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails
+[submodule "home/.vim/bundle/vim-repeat"]
+	path = home/.vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "home/.vim/bundle/vim-rhubarb"]
+	path = home/.vim/bundle/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb
+[submodule "home/.vim/bundle/vim-ruby"]
+	path = home/.vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby
+[submodule "home/.vim/bundle/vim-surround"]
+	path = home/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "home/.vim/bundle/vim-textobj-rubyblock"]
+	path = home/.vim/bundle/vim-textobj-rubyblock
+	url = https://github.com/nelstrom/vim-textobj-rubyblock
+[submodule "home/.vim/bundle/vim-textobj-user"]
+	path = home/.vim/bundle/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user
+[submodule "home/.vim/bundle/vim-tmux-navigator"]
+	path = home/.vim/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "home/.vim/bundle/vim-trailing-whitespace"]
+	path = home/.vim/bundle/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
+[submodule "home/.vim/bundle/vim-unimpaired"]
+	path = home/.vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "zsh-custom/plugins/zsh-256color"]
+	path = zsh-custom/plugins/zsh-256color
+	url = https://github.com/chrissicool/zsh-256color
