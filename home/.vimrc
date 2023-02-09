@@ -258,7 +258,7 @@ nnoremap <leader>ggb :Git branch<space>
 nnoremap <leader>ggc :Git checkout<space>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Git blame<CR>
 noremap <leader>gr :Gbrowse<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Ggrep<space>
@@ -365,6 +365,7 @@ nnoremap <C-b> :Buffers<CR>
 nnoremap <C-t> :Tags<CR>
 
 let g:fzf_tags_command = 'ctags -R --languages=ruby --exclude=.git --exclude=log'
+let g:fzf_layout = { 'down': '40%' }
 
 " Legacy CommandT settings
 " let g:CommandTFileScanner = 'git'

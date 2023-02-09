@@ -9,7 +9,7 @@ alias rtest="ruby -Itest"
 alias cds="cd ~/code/Shopify"
 alias cdr="cd ~/code/russbot"
 alias cdc="cd ~/code/"
-alias cdd="cd ~/Desktop/docs"
+alias cdd="cd ~/Documents/docs"
 
 alias gl='git log --graph --pretty=format:"%Creset%h %aN %Cred%d %Cblue%s"'
 alias gd='git diff HEAD --color'
